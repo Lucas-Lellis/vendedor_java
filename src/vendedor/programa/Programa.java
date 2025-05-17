@@ -28,16 +28,16 @@ public class Programa {
                     5. Remover Vendedor
                     6. Fechar Programa""");
 
-            System.out.print("Qual a opcao: ");
+            System.out.println("\nQual a opcao: ");
             opcao = scan.nextInt();
 
             switch (opcao) {
                 case 1 -> cadastrar(vendedorList);
                 case 2 -> maiorTempo(vendedorList);
                 case 3 -> nomeCategoria(vendedorList);
-                case 4 -> totalVendas(vendedorList);
+                case 4 -> System.out.println(totalVendas(vendedorList));
                 case 5 -> removerVendedor(vendedorList);
-                case 6 -> System.out.println("finalizando programa...");
+                case 6 -> System.out.println("Finalizando Programa...");
             }
         }
         while (opcao != 6);
@@ -46,7 +46,7 @@ public class Programa {
     public static void cadastrar(List<Vendedor> lista) {
 
         for (int i = 0; i < TAM; i++) {
-            System.out.print("\nNome :");
+            System.out.print("\nNome: ");
             scan.nextLine();
             String nome = scan.nextLine();
             System.out.print("Tempo de Serviço em Horas: ");
@@ -64,7 +64,7 @@ public class Programa {
         lista.sort(Comparator.comparingInt(Vendedor :: getTempoDeServico).reversed());
 
         for (Vendedor ven : lista) {
-            System.out.println('\n' + ven.getNome() + " - " + ven.getTempoDeServico() + " horas");
+            System.out.println(ven.getNome() + " - " + ven.getTempoDeServico() + " horas");
         }
     }
 
@@ -80,7 +80,7 @@ public class Programa {
         double soma = 0;
 
         for (Vendedor ven : lista) {
-            soma = ven.getTotalVendas();
+            soma += ven.getTotalVendas();
         }
 
         return String.format("Total de Vendas R$ %.2f" + soma);
@@ -91,10 +91,6 @@ public class Programa {
         scan.nextLine();
         String nome = scan.nextLine();
 
-        for (Vendedor ven : lista) {
-            if (nome.equalsIgnoreCase(ven.getNome())) {
-                lista.remove(ven);
-            }
-        }
+        lista.removeIf(x -> nome.equalsIgnoreCase(x.getNome()));
     }
 }

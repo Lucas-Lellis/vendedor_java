@@ -12,6 +12,7 @@ public class Vendedor {
         this.nome = nome;
         this.tempoDeServico = tempoDeServico;
         this.totalVendas = totalVendas;
+        this.categoria = getCategoria();
     }
 
     public String getNome() {
