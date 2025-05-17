@@ -12,7 +12,14 @@ public class Vendedor {
         this.nome = nome;
         this.tempoDeServico = tempoDeServico;
         this.totalVendas = totalVendas;
-        this.categoria = getCategoria();
+
+        if (tempoDeServico > 60) {
+            this.categoria = 'A';
+        } else if (tempoDeServico < 30) {
+            this.categoria = 'C';
+        } else {
+            this.categoria = 'B';
+        }
     }
 
     public String getNome() {
@@ -44,15 +51,7 @@ public class Vendedor {
     }
 
     public void setCategoria(char categoria) {
-        if (this.tempoDeServico > 60) {
-            this.categoria = 'A';
-        }
-        else if (this.tempoDeServico < 30) {
-            this.categoria = 'C';
-        }
-        else {
-            this.categoria = 'B';
-        }
+        this.categoria = categoria;
     }
 
     public Double getTotalVendas() {
@@ -65,12 +64,16 @@ public class Vendedor {
 
     @Override
     public String toString() {
-        return nome +
-                "\n" +
-                tempoDeServico +
-                " horas \n" +
-                "Categoria: " +
-                categoria;
+        return String.format("""
+        Nome: %s
+        Tempo de Serviço: %d horas
+        Categoria: %c
+        Total de Vendas: R$ %.2f
+        Comissão: R$ %.2f
+        Gratificação: R$ %.2f
+        Salário Final: R$ %.2f
+        """,
+                nome, tempoDeServico, categoria, totalVendas, comissao(), gratificao(), salario());
     }
 
 //    comissao que calcula e retorna a comissão do vendedor de acordo com o valor de suas vendas: 20% do total de sua venda,

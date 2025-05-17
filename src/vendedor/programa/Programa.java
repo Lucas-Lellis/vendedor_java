@@ -12,7 +12,7 @@ public class Programa {
 
     static List<Vendedor> vendedorList = new ArrayList<>();
     static Scanner scan = new Scanner(System.in);
-    static final int TAM = 5;
+    static final int TAM = 3;
     static Vendedor vendedor;
 
     public static void main(String[] args) {
@@ -21,6 +21,7 @@ public class Programa {
 
         do {
             System.out.println("""
+                    \n--------------------------------------------------
                     1. Cadastrar Vendedor
                     2. Mostrar Vendedor com Maior Tempo de Serviço
                     3. Mostrar Nome e Categoria de Todos os Vendedores
@@ -28,7 +29,7 @@ public class Programa {
                     5. Remover Vendedor
                     6. Fechar Programa""");
 
-            System.out.println("\nQual a opcao: ");
+            System.out.print("\nQual a opcao: ");
             opcao = scan.nextInt();
 
             switch (opcao) {
@@ -83,7 +84,8 @@ public class Programa {
             soma += ven.getTotalVendas();
         }
 
-        return String.format("Total de Vendas R$ %.2f" + soma);
+        return String.format("Total de Vendas R$ %.2f", soma);
+
     }
 
     public static void removerVendedor(List<Vendedor> lista) {
