@@ -1,6 +1,5 @@
 package src.vendedor.programa;
 
-import org.w3c.dom.ls.LSOutput;
 import src.vendedor.entidade.Vendedor;
 
 import java.util.ArrayList;
