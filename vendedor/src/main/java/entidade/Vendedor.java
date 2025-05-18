@@ -1,4 +1,4 @@
-package src.vendedor.entidade;
+package entidade;
 
 public class Vendedor {
 

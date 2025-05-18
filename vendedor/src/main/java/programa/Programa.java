@@ -1,6 +1,6 @@
-package src.vendedor.programa;
+package programa;
 
-import src.vendedor.entidade.Vendedor;
+import entidade.Vendedor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
